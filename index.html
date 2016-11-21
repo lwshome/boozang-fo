@@ -43,7 +43,11 @@ This document will be updated as the Boozang test service evolves and an updated
 <li><a href="#Data-handling">Data handling</a></li>
 </ul>
 <h2 id="the-navigation">The Navigation</h2>
-<p><img src="images/navigation_bar.png" alt="example image" title="An exemplary image" /></p>
+<p>The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
+Landing Pages. In Navigation you would find test cases such as Header Navigation, Sidebar Navigation, Main Search, where functionality related to navigation would be found. In Store, you would find test cases for Add Item To Cart, Checkout Items, Clear Cart, etc. Below is a picture of the Boozang navigation bar for the Interactive Tutorial &quot;Angular Store&quot;, where you can see the modules Fruit Interactive Tutorial and Your Space. As the Fruit Interactive Tutorial module has been expanded, we can see the test cases 'Add Random Fruits&quot; and &quot;Fruit Test&quot; inside.
+<img src="images/navigation_bar.png" alt="example image" title="An exemplary image" />
+On the top you can see the operations (from left to right): Create New Module, Create New Test, Paste, Cut, and Copy. In the tree structure, the folder
+icons to the left of the module name shows if the module is expanded or not. To the left of the test name the icon shown denotes the test type. The test type can be either cell test, unit test, integration test or bug.</p>
 <h2 id="the-function-bar">The Function Bar</h2>
 <p><img src="images/annotated_panel.png" alt="example image" title="An exemplary image" /></p>
 <p>Here is an explanation of the functions:</p>
@@ -61,17 +65,91 @@ This document will be updated as the Boozang test service evolves and an updated
 <li>Save: Saves to server database. In order to release lock follow with cancel</li>
 </ol>
 <h2 id="settings">Settings</h2>
+<p>The Settings panel can be found in the Hamburger menu in the top right corner. The Settings are divided into tabs: General, Recording Events, Dom Strategy,
+Validation Ignore, Subscription, Service. As soon as you update any settings in needs to be Saved to take effect. This will affect your user only,
+and will persist between sessions for your user. If it's desired to change a setting for the whole project, use Save As Default. This change will be set
+on the project level and will affect all new sessions for other users. Note: Save As Default require Modify-privileges on the Project-level.</p>
 <h3 id="general">General</h3>
 <p><img src="images/settings_general.png" alt="example image" title="An exemplary image" /></p>
-<h3 id="recording">Recording</h3>
+<p>The General Settings tab allows the user to control basic test functionality and look &amp; feel. Explanation of functions from top to bottom</p>
+<dl>
+<dt>Default Root URL</dt>
+<dd>This is defines the starting point of your application relative to the bz.html-fragment. This means: the normal case when the bz.html is located in
+the same directory as index.html, this should be &quot;/&quot; or blank. Another common configuraion is when the bz.html is located in the root, and my index.httml is located one directory down, as the example &quot;angular-shop&quot;. This will allow the &quot;angular-shop&quot; to be the default entry point. </dd>
+<dt>IDE Path</dt>
+<dd>This is the exact path to the bz.html. This will help you finding the local test URL when inviting new users to the team.</dd>
+<dt>Pop Window Style</dt>
+<dd>This allows you to put custom CSS for the tool-set window. By doing this the tool can be sized and positioned the same way every time it is launched.</dd>
+<dt>Wait Threshold</dt>
+<dd>Wensheng</dd>
+<dt>Step Interval</dt>
+<dd>This is the step delay when re-playing a test in slow mode.</dd>
+<dt>Data Page URL</dt>
+<dd>Wensheng</dd>
+</dl>
+<p>Checkboxes</p>
+<dl>
+<dt>Auto Show Test Report after testing</dt>
+<dd>This means test report will be shown after each test run.</dd>
+<dt>Auto Pop Dom Picker when the best DOM path can not be found</dt>
+<dd>When there isn't a unique DOM path found, this will pop the DOM picker to allow you to further specify the exact DOM path desired.</dd>
+</dl>
+<h3 id="recording-events">Recording Events</h3>
+<p>This settings tab allows the user to control which events should be captured when recording. </p>
 <p><img src="images/settings_recording.png" alt="example image" title="An exemplary image" /></p>
-<h3 id="dom">DOM</h3>
+<p>Explanation of functions from top to bottom</p>
+<dl>
+<dt>Events</dt>
+<dd>Specifies which events should be captured in the recording process.</dd>
+<dt>Mousemove step</dt>
+<dd>This specifies how often a new event should be captured when doing drag-and-drop. 50 px means that in order to test drag and drop, it will generate
+a new event every 50 px. </dd>
+<dt>Method</dt>
+<dd>It's here possible to allow the user to show the DOM tree mask when recording. This will highlight the exact element in the DOM tree where the
+trigger event is generated.</dd>
+</dl>
+<p>Checkboxes</p>
+<dl>
+<dt>Ignore Click on Input</dt>
+<dd>Wensheng</dd>
+</dl>
+<h3 id="dom-strategy">DOM Strategy</h3>
+<p>This is arguably the most important setting of the Boozang tool. The DOM Strategy allows you to configure how the tool uniquely identifies an
+element in the DOM tree. As DOM tree conventions vary between different sites, this is something that is typically done once per project and left untouched.
+Having a correct DOM tree strategy will determine how well the tool will work.</p>
 <p><img src="images/settings_dom.png" alt="example image" title="An exemplary image" /></p>
-<h3 id="validation">Validation</h3>
+<p>Explanation of functions from top to bottom</p>
+<dl>
+<dt>Id</dt>
+<dd>Determine if you want to catch the Id attribute in the DOM tree. If you have unique ids that are non-dynamic, use First and leave the second field
+blank. To support dynamic Ids, you can use Regexp ignore. As can be seen in the example, the Regexp ignore [0-9] matches on the characters in the ids and ignores numbers.</dd>
+<dt>Class</dt>
+<dd>Determines if you want to include the class when navigating the DOM tree. In the second field you can specify which classes to ignore.</dd>
+<dt>Attribute</dt>
+<dd>Sets one or many special attributes to include when matching.</dd>
+<dt>Contains text</dt>
+<dd>In some cases, when ids cannot be enforced on all items, it's sometimes useful to match on the contents of an element.</dd>
+<dt>DOM</dt>
+<dd>Wensheng</dd>
+</dl>
+<h3 id="validation-ignore">Validation Ignore</h3>
+<p>Sets the default attributes that are ignored when creating a validation. The attributes not ignored will be included in the asserts-equals condition
+being build when doing a validation. This can also be set on each validation action, but the setting here should will allow the user to do one-click validations without doing further changes.</p>
 <p><img src="images/settings_validation.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Ignore</dt>
+<dd>The default attributes that should be ignored when doing validations.</dd>
+<dt>Other Attributes</dt>
+<dd>Any other (custom) attributes that should be ignored</dd>
+<dt>Other Elements</dt>
+<dd>Any other elements that should be ignored</dd>
+</dl>
 <h3 id="subscriptions">Subscriptions</h3>
+<p>This allows you to setup email notification for test runs. The options are self-explanatory.</p>
+<p>Wensheng </p>
 <p><img src="images/settings_subscription.png" alt="example image" title="An exemplary image" /></p>
 <h3 id="service">Service</h3>
+<p>Wensheng</p>
 <p><img src="images/settings_service.png" alt="example image" title="An exemplary image" /></p>
 <h2 id="actions">Actions</h2>
 <h3 id="validate">Validate</h3>
