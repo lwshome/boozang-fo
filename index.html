@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hello!</title>
+        <title>Boozang documentation</title>
 
         <link rel="stylesheet" href="https://ljunggren.github.io/boozang-fo/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://ljunggren.github.io/boozang-fo/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
         <header class="navbar navbar-default navbar-fixed-top">
 
             <a class="navbar-brand" href="https://ljunggren.github.io/boozang-fo/">
-                Hello!
+                Boozang documentation
                 <small class="hidden-xs hidden-sm">
                     This is the default subtitle!
                 </small>
@@ -47,7 +47,17 @@ This document will be updated as the Boozang test service evolves and an updated
 <li><a href="#Subscription">Subscription</a></li>
 <li><a href="#Service">Service</a></li>
 </ul></li>
-<li><a href="#Actions">Actions</a></li>
+<li><a href="#Test-View">Test View</a></li>
+<li><a href="#Actions">Actions</a>
+<ul>
+<li><a href="#Validate">Validate</a></li>
+<li><a href="#Trigger-Event">Trigger Event</a></li>
+<li><a href="#Extract-Data">Extract Data</a> </li>
+<li><a href="#JS-Code">JS Code</a></li>
+<li><a href="#Plug-test-case">Plug Test-case</a></li>
+<li><a href="#Comment">Comment</a></li>
+<li><a href="#Refresh">Refesh</a></li>
+</ul></li>
 <li><a href="#Data-handling">Data handling</a></li>
 </ul>
 <h2 id="the-navigation">The Navigation</h2>
@@ -167,22 +177,209 @@ being build when doing a validation. This can also be set on each validation act
 <h3 id="service">Service</h3>
 <p>Wensheng</p>
 <p><img src="images/settings_service.png" alt="example image" title="An exemplary image" /></p>
+<h2 id="test-view">Test View</h2>
+<p>The main test view is shown as soon as a test is selected in the left-hand tree navigation.</p>
+<p><img src="images/test_view.png" alt="example image" title="An exemplary image" /></p>
+<p>Here is an explanation of the different functions</p>
+<dl>
+<dt>Record</dt>
+<dd>Starts a recording. This is the same as the Record function on the Functional panel.</dd>
+<dt>Play</dt>
+<dd>Plays the test case. This is the same as the Play function on the Functional panel.</dd>
+<dt>Step</dt>
+<dd>Runs the test action by action. This is the same as the Step function on the Functional panel.</dd>
+<dt>Stop</dt>
+<dd>Stops the execution of a test.</dd>
+<dt>Slow</dt>
+<dd>Toggles slow mode off/on. Slow modes inserts the delay specified under Settings-&gt;General.</dd>
+<dt>Test Title  </dt>
+<dd>The Test title</dd>
+<dt>Entry URL</dt>
+<dd>The starting point the test will execute from</dd>
+<dt>Bind data</dt>
+<dd>Add a data binding to the test case.</dd>
+<dt>Save</dt>
+<dd>The test case is saved to the Boozang Cloud. lock is not released. In order to release lock click Save followed by Cancel.</dd>
+<dt>Cancel</dt>
+<dd>Reloads test from server and releases lock.</dd>
+<dt>Test Type</dt>
+<dd>Cell, Unit, integration of Bug.</dd>
+<dt>Access Policy</dt>
+<dd>Link or Follow. A link test cases starts on Entry URL. A follow test case starts where the last test case left off. Cell tests are always of the follow Access Policy.</dd>
+<dt>DOM Warning</dt>
+<dd>When highlighted yellow it means the DOM matching policy found several items matching the description. This does not mean it will fail, but that either the source code or the the DOM selection policy should be updated for optimum results.</dd>
+<dt>Action Index</dt>
+<dd>The index number of the action</dd>
+<dt>Action Type</dt>
+<dd>The Action Type icon</dd>
+<dt>Select</dt>
+<dd>An Action selector. Un-check to skip action execution.</dd>
+<dt>Breakpoint</dt>
+<dd>A breakpoint. Test execution will stop at active breakpoint. Click to toggle breakpoint.</dd>
+<dt>Delay</dt>
+<dd>Wensheng</dd>
+<dt>Action Description</dt>
+<dd>Description of action. Often auto-generated, but can be set explicitly if needed.</dd>
+<dt>Play Action</dt>
+<dd>Play Single Action.</dd>
+<dt>Bind Data</dt>
+<dd>Open up data binding view to bind project data to action.</dd>
+<dt>Expand</dt>
+<dd>Expand action for detailed view (described individually below).</dd>
+</dl>
 <h2 id="actions">Actions</h2>
 <h3 id="validate">Validate</h3>
+<p>The Validate action creates and asserts condition, and is used to make sure a certain element of the page is as expected. A typical asserts condition could be a simple asserts-equals condition, such as making sure that after adding an item to cart, the item is present in the cart. The validation is a very versatile function and can be divided into HTML, SCRIPT, or DATA.</p>
+<p>Validate (HTML)</p>
 <p><img src="images/action_validate.png" alt="example image" title="An exemplary image" /></p>
+<p>The asserts conditions can be done very flexible. The default asserts condition is an HTML asserts equal using BZ Format.
+Below follows an explanation of the fields:</p>
+<dl>
+<dt>Method</dt>
+<dd>The method could be either html, script or data.</dd>
+<dt>Element</dt>
+<dd>This is the DOM tree element that the validation happens</dd>
+<dt>Content</dt>
+<dd>BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section.</dd>
+<dt>Compare</dt>
+<dd>A list of current compare operators. The default is equals (=).</dd>
+<dt>Expectation</dt>
+<dd>The value to compare with. This is automatically extracted from the document when creating the validation condition.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
+<p>Validate (SCRIPT)</p>
+<p><img src="images/action_validate_script.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Method</dt>
+<dd>The method could be either html, script or data.</dd>
+<dt>Element</dt>
+<dd>This is the DOM tree element that the validation happens</dd>
+<dt>Script</dt>
+<dd>Wensheng. This is a java script that will be executed</dd>
+<dt>Compare</dt>
+<dd>A list of current compare operators. The default is equals (=).</dd>
+<dt>Expectation</dt>
+<dd>The value to compare with. This is automatically extracted from the document when creating the validation condition.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
+<p>Validate (DATA)</p>
+<p><img src="images/action_validate_data.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Method</dt>
+<dd>For the DATA method, this could be further specified to be GET, POST, PUT, DELETE</dd>
+<dt>URL</dt>
+<dd>Thi is the API end-point URL</dd>
+<dt>HTTP Headers</dt>
+<dd>These are the request headers in JSON data</dd>
+<dt>HTTP Data</dt>
+<dd>This is the request body in JSON</dd>
+<dt>Compare</dt>
+<dd>A list of current compare operators. The default is equals (=).</dd>
+<dt>Expectation</dt>
+<dd>The value to compare with. This is automatically extracted from the document when creating the validation condition.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
 <h3 id="trigger-event">Trigger Event</h3>
+<p>The trigger event functionality is used to emulate an event in the browser. This is also what is generated automatically by the record function.</p>
 <p><img src="images/action_triggerevent.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Element</dt>
+<dd>This is the DOM tree element that the trigger event is acting on</dd>
+<dt>Event</dt>
+<dd><p>This is the actual event registered</p>
+<p>Pop Action</p></dd>
+<dd>This allows the user to handle alert, confirm or prompt popups.</dd>
+</dl>
 <h3 id="extract-data">Extract Data</h3>
+<p>The extract data is used to extract data from the page or from API calls. Just like validate, it's easier to handle these cases separately</p>
+<p>Extract Data (HTML)</p>
 <p><img src="images/action_extractdata.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Method</dt>
+<dd>For the HTML method, it extracts data from the page.</dd>
+<dt>Element</dt>
+<dd>This is the DOM tree element that we are copying the data from</dd>
+<dt>Content</dt>
+<dd>BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section.</dd>
+<dt>Extract Data</dt>
+<dd>This is the data variable to copy the data to. See data section for setting up data structures.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
+<p>Extract Data (SCRIPT)</p>
+<p><img src="images/action_extractdata.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Method</dt>
+<dd>For the SCRIPT method, it extracts data from the Wensheng</dd>
+<dt>Element</dt>
+<dd>This is the DOM tree element that we are copying the data from</dd>
+<dt>Content</dt>
+<dd>BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section.</dd>
+<dt>Extract Data</dt>
+<dd>This is the data variable to copy the data to. See data section for setting up data structures.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
+<p>Extract Data (DATA)</p>
+<p><img src="images/action_extractdata.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Method</dt>
+<dd>For the DATA method, it extracts data from an API call.</dd>
+<dt>Element</dt>
+<dd>This is the DOM tree element that we are copying the data from</dd>
+<dt>Content</dt>
+<dd>BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section.</dd>
+<dt>Extract Data</dt>
+<dd>This is the data variable to copy the data to. See data section for setting up data structures.</dd>
+<dt>Ref of Pass</dt>
+<dd>A goto condition for passed validation</dd>
+<dt>Ref of Failed</dt>
+<dd>A goto condition for failed validation</dd>
+</dl>
 <h3 id="js-code">JS Code</h3>
+<p>The JS Code action is straightforward and allows for executing Java script directly in the browser. </p>
 <p><img src="images/action_jscode.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Element</dt>
+<dd>This is the DOM tree element that we are executing the script on.</dd>
+<dt>Script</dt>
+<dd>This is the java script being executed</dd>
+</dl>
 <h3 id="plug-test-case">Plug test-case</h3>
+<p>This is the Goto functionality of the Boozang tool. This is often done to link together more basic test cases to larger, more complicated
+chains of tests. </p>
 <p><img src="images/action_plug.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Ref of Pass</dt>
+<dd>This is the Goto condition. A plug-tests case always executes successfully.</dd>
+<dt>Ref of Failed</dt>
+<dd>This is the number of re-tries done in case of execution failure.</dd>
+</dl>
 <h3 id="comment">Comment</h3>
+<p>The comment allows you to create annotations directly in the page. This is really useful to highlight bugs and do point out look&amp;feel discrepancies.</p>
 <p><img src="images/action_comment.png" alt="example image" title="An exemplary image" /></p>
+<dl>
+<dt>Element</dt>
+<dd>This is the DOM tree element that we are annotating.</dd>
+</dl>
 <h3 id="refresh">Refresh</h3>
+<p>This refreshes the whole page.</p>
 <p><img src="images/action_refresh.png" alt="example image" title="An exemplary image" /></p>
 <h2 id="data-handling">Data handling</h2>
+<h2 id="appendix">Appendix</h2>
 <p>Note that --- not considering the asterisk --- the actual text
 content starts at 4-columns in.</p>
 <blockquote>
@@ -249,7 +446,7 @@ goto first step (or shut off burner when done)</code></pre>
 that last line which continues item 3 above).</p>
 <p>Here's a link to <a href="http://foo.bar">a website</a>, to a <a href="local-doc.html">local
 doc</a>, and to a <a href="#an-h2-header">section heading in the current
-doc</a>. Here's a footnote <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref">3</a></sup>.</p>
+doc</a>. Here's a footnote [^1].</p>
 <p>Tables can look like this:</p>
 <p>size  material      color</p>
 <hr />
@@ -293,14 +490,6 @@ math should get its own line and be put in in double-dollarsigns:</p>
 <p>$$I = \int \rho R^{2} dV$$</p>
 <p>And note that you can backslash-escape any punctuation characters
 which you wish to be displayed literally, ex.: `foo`, *bar*, etc.</p>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn:1">
-<p>Footnote text goes here.&#160;<a href="#fnref1:1" rev="footnote" class="footnote-backref">&#8617;</a></p>
-</li>
-</ol>
-</div>
                 </section>
 
             </div>
