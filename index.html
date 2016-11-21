@@ -33,14 +33,62 @@
                     <h1 id="boozang-functional-overview">Boozang Functional Overview</h1>
 <p>In this functional overview document we will go over and explain the different functions of the Boozang test tool.
 This document will be updated as the Boozang test service evolves and an updated copy can always be found on GitHub:
-<a href="https://github.com/ljunggren/boozang-userguide">https://github.com/ljunggren/boozang-userguide</a></p>
-<p>2nd paragraph. <em>Italic</em>, <strong>bold</strong>, and <code>monospace</code>. Itemized lists
-look like:</p>
+<a href="https://ljunggren.github.io/boozang-fo/">https://ljunggren.github.io/boozang-fo/</a></p>
+<p>This document is divided into the following sections:</p>
 <ul>
-<li>this one</li>
-<li>that one</li>
-<li>the other one</li>
+<li><a href="#The-Navigation">The Navigation</a></li>
+<li><a href="#The-Function-Bar">The Function Bar</a></li>
+<li><a href="#Settings">Settings</a></li>
+<li><a href="#Actions">Actions</a></li>
+<li><a href="#Data-handling">Data handling</a></li>
 </ul>
+<h2 id="the-navigation">The Navigation</h2>
+<p><img src="images/navigation_bar.png" alt="example image" title="An exemplary image" /></p>
+<h2 id="the-function-bar">The Function Bar</h2>
+<p><img src="images/annotated_panel.png" alt="example image" title="An exemplary image" /></p>
+<p>Here is an explanation of the functions:</p>
+<ol>
+<li>Create Folder: Creates a folder in the test tree to keep your tests sorted</li>
+<li>Create Test: Creates a new test. This creates an empty test which unlocks all test actions</li>
+<li>Record: Records actions into the tests by registering events in the browser. The events being registered can be set in Settings (in hamburger menu)</li>
+<li>Play: Runs the test</li>
+<li>Step: Runs the test one step at a time</li>
+<li>Stop: Stops current test run</li>
+<li>Validate: Creates a validation, or in test language, assertion in the page</li>
+<li>Comment: Creates a comment text box in the page. Useful to point out bugs and discrepancies</li>
+<li>Fill Form: Fills out form and enables binding into JSON data structures</li>
+<li>Cancel/Unlock: Reloads test from server. Local changes will be lost and lock removed</li>
+<li>Save: Saves to server database. In order to release lock follow with cancel</li>
+</ol>
+<h2 id="settings">Settings</h2>
+<h3 id="general">General</h3>
+<p><img src="images/settings_general.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="recording">Recording</h3>
+<p><img src="images/settings_recording.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="dom">DOM</h3>
+<p><img src="images/settings_dom.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="validation">Validation</h3>
+<p><img src="images/settings_validation.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="subscriptions">Subscriptions</h3>
+<p><img src="images/settings_subscription.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="service">Service</h3>
+<p><img src="images/settings_service.png" alt="example image" title="An exemplary image" /></p>
+<h2 id="actions">Actions</h2>
+<h3 id="validate">Validate</h3>
+<p><img src="images/action_validate.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="trigger-event">Trigger Event</h3>
+<p><img src="images/action_triggerevent.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="extract-data">Extract Data</h3>
+<p><img src="images/action_extractdata.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="js-code">JS Code</h3>
+<p><img src="images/action_jscode.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="plug-test-case">Plug test-case</h3>
+<p><img src="images/action_plug.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="comment">Comment</h3>
+<p><img src="images/action_comment.png" alt="example image" title="An exemplary image" /></p>
+<h3 id="refresh">Refresh</h3>
+<p><img src="images/action_refresh.png" alt="example image" title="An exemplary image" /></p>
+<h2 id="data-handling">Data handling</h2>
 <p>Note that --- not considering the asterisk --- the actual text
 content starts at 4-columns in.</p>
 <blockquote>
