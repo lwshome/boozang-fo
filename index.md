@@ -16,14 +16,22 @@ This document is divided into the following sections:
       * [Validation Ignore](#Validation-Ignore)
       * [Subscription](#Subscription)
       * [Service](#Service)
+  * [Test View](#Test-View)
   * [Actions](#Actions)
+      * [Validate](#Validate)
+      * [Trigger Event](#Trigger-Event)
+      * [Extract Data](#Extract-Data) 
+      * [JS Code](#JS-Code)
+      * [Plug Test-case](#Plug-test-case)
+      * [Comment](#Comment)
+      * [Refesh](#Refresh)
   * [Data handling](#Data-handling)
 
 
 
 The Navigation
 ------------
-The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
+Testing. The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
 Landing Pages. In Navigation you would find test cases such as Header Navigation, Sidebar Navigation, Main Search, where functionality related to navigation would be found. In Store, you would find test cases for Add Item To Cart, Checkout Items, Clear Cart, etc. Below is a picture of the Boozang navigation bar for the Interactive Tutorial "Angular Store", where you can see the modules Fruit Interactive Tutorial and Your Space. As the Fruit Interactive Tutorial module has been expanded, we can see the test cases 'Add Random Fruits" and "Fruit Test" inside.
 
 ![example image](images/navigation_bar.png "An exemplary image")
@@ -184,40 +192,309 @@ Wensheng
 ![example image](images/settings_service.png "An exemplary image")
 
 
+Test View
+------------
+
+The main test view is shown as soon as a test is selected in the left-hand tree navigation.
+
+![example image](images/test_view.png "An exemplary image")
+
+Here is an explanation of the different functions
+
+Record
+ : Starts a recording. This is the same as the Record function on the Functional panel.
+
+Play
+ : Plays the test case. This is the same as the Play function on the Functional panel.
+
+Step
+ : Runs the test action by action. This is the same as the Step function on the Functional panel.
+
+Stop
+ : Stops the execution of a test.
+
+Slow
+ : Toggles slow mode off/on. Slow modes inserts the delay specified under Settings->General.
+
+Test Title  
+ : The Test title 
+
+Entry URL
+ : The starting point the test will execute from
+
+Bind data
+ : Add a data binding to the test case.
+
+Save
+ : The test case is saved to the Boozang Cloud. lock is not released. In order to release lock click Save followed by Cancel. 
+
+Cancel
+ : Reloads test from server and releases lock.
+
+Test Type
+ : Cell, Unit, integration of Bug.
+
+Access Policy
+ : Link or Follow. A link test cases starts on Entry URL. A follow test case starts where the last test case left off. Cell tests are always of the follow Access Policy.
+
+DOM Warning
+  : When highlighted yellow it means the DOM matching policy found several items matching the description. This does not mean it will fail, but that either the source code or the the DOM selection policy should be updated for optimum results. 
+
+Action Index
+ : The index number of the action
+
+Action Type
+ : The Action Type icon
+
+Select
+ : An Action selector. Un-check to skip action execution.
+
+Breakpoint
+ : A breakpoint. Test execution will stop at active breakpoint. Click to toggle breakpoint. 
+
+Delay
+ : Wensheng
+
+Action Description
+ : Description of action. Often auto-generated, but can be set explicitly if needed.
+
+Play Action
+ : Play Single Action.
+
+Bind Data
+ : Open up data binding view to bind project data to action.
+
+Expand
+ : Expand action for detailed view (described individually below).
+
+
 Actions
 ------------
 
 ### Validate ###
 
+The Validate action creates and asserts condition, and is used to make sure a certain element of the page is as expected. A typical asserts condition could be a simple asserts-equals condition, such as making sure that after adding an item to cart, the item is present in the cart. The validation is a very versatile function and can be divided into HTML, SCRIPT, or DATA.
+
+Validate (HTML)
+
 ![example image](images/action_validate.png "An exemplary image")
 
+The asserts conditions can be done very flexible. The default asserts condition is an HTML asserts equal using BZ Format.
+Below follows an explanation of the fields:
+
+Method
+ : The method could be either html, script or data. 
+
+Element
+ : This is the DOM tree element that the validation happens
+
+Content
+ : BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section. 
+
+Compare
+  : A list of current compare operators. The default is equals (=).
+
+Expectation
+  : The value to compare with. This is automatically extracted from the document when creating the validation condition.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
+
+
+Validate (SCRIPT)
+
+![example image](images/action_validate_script.png "An exemplary image")
+
+Method
+ : The method could be either html, script or data. 
+
+Element
+ : This is the DOM tree element that the validation happens
+
+Script
+ : Wensheng. This is a java script that will be executed
+
+Compare
+  : A list of current compare operators. The default is equals (=).
+
+Expectation
+  : The value to compare with. This is automatically extracted from the document when creating the validation condition.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
+
+
+Validate (DATA)
+
+![example image](images/action_validate_data.png "An exemplary image")
+
+Method
+ : For the DATA method, this could be further specified to be GET, POST, PUT, DELETE
+
+URL
+ : Thi is the API end-point URL
+
+HTTP Headers
+ : These are the request headers in JSON data
+
+HTTP Data
+ : This is the request body in JSON
+
+Compare
+  : A list of current compare operators. The default is equals (=).
+
+Expectation
+  : The value to compare with. This is automatically extracted from the document when creating the validation condition.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
 
 ### Trigger Event ###
 
+The trigger event functionality is used to emulate an event in the browser. This is also what is generated automatically by the record function.
+
 ![example image](images/action_triggerevent.png "An exemplary image")
+
+Element
+ : This is the DOM tree element that the trigger event is acting on
+
+Event
+ : This is the actual event registered
+
+ Pop Action
+  : This allows the user to handle alert, confirm or prompt popups.
 
 ### Extract Data ###
 
+The extract data is used to extract data from the page or from API calls. Just like validate, it's easier to handle these cases separately
+
+Extract Data (HTML)
+
 ![example image](images/action_extractdata.png "An exemplary image")
+
+Method
+ : For the HTML method, it extracts data from the page. 
+
+Element
+ : This is the DOM tree element that we are copying the data from
+
+Content
+ : BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section. 
+
+Extract Data
+  : This is the data variable to copy the data to. See data section for setting up data structures.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
+
+Extract Data (SCRIPT)
+
+![example image](images/action_extractdata.png "An exemplary image")
+
+Method
+ : For the SCRIPT method, it extracts data from the Wensheng
+
+Element
+ : This is the DOM tree element that we are copying the data from
+
+Content
+ : BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section. 
+
+Extract Data
+  : This is the data variable to copy the data to. See data section for setting up data structures.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
+
+
+Extract Data (DATA)
+
+![example image](images/action_extractdata.png "An exemplary image")
+
+Method
+ : For the DATA method, it extracts data from an API call.
+
+Element
+ : This is the DOM tree element that we are copying the data from
+
+Content
+ : BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section. 
+
+Extract Data
+  : This is the data variable to copy the data to. See data section for setting up data structures.
+
+Ref of Pass
+ : A goto condition for passed validation
+
+Ref of Failed
+ : A goto condition for failed validation   
+
+
 
 ### JS Code ###
 
+The JS Code action is straightforward and allows for executing Java script directly in the browser. 
+
 ![example image](images/action_jscode.png "An exemplary image")
+
+Element
+ : This is the DOM tree element that we are executing the script on.
+
+Script
+: This is the java script being executed
 
 ### Plug test-case ###
 
+This is the Goto functionality of the Boozang tool. This is often done to link together more basic test cases to larger, more complicated 
+chains of tests. 
+
 ![example image](images/action_plug.png "An exemplary image")
+
+Ref of Pass
+ : This is the Goto condition. A plug-tests case always executes successfully. 
+
+Ref of Failed
+ : This is the number of re-tries done in case of execution failure.   
+
 
 ### Comment ###
 
+The comment allows you to create annotations directly in the page. This is really useful to highlight bugs and do point out look&feel discrepancies.
+
 ![example image](images/action_comment.png "An exemplary image")
 
+Element
+ : This is the DOM tree element that we are annotating. 
+
 ### Refresh ###
+
+This refreshes the whole page.
 
 ![example image](images/action_refresh.png "An exemplary image")
 
 Data handling
 ------------
+
+
+Appendix
+------------
+
+
 
 Note that --- not considering the asterisk --- the actual text
 content starts at 4-columns in.
