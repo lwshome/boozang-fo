@@ -38,32 +38,48 @@ This document will be updated as the Boozang test service evolves and an updated
 <ul>
 <li><a href="#The-Navigation">The Navigation</a></li>
 <li><a href="#The-Function-Bar">The Function Bar</a></li>
-<li><a href="#Settings">Settings</a></li>
+<li><a href="#Settings">Settings</a>
+<ul>
+<li><a href="#General">General</a></li>
+<li><a href="#Recording-Events">Recording Events</a></li>
+<li><a href="#DOM-Strategy">DOM Strategy</a> </li>
+<li><a href="#Validation-Ignore">Validation Ignore</a></li>
+<li><a href="#Subscription">Subscription</a></li>
+<li><a href="#Service">Service</a></li>
+</ul></li>
 <li><a href="#Actions">Actions</a></li>
 <li><a href="#Data-handling">Data handling</a></li>
 </ul>
 <h2 id="the-navigation">The Navigation</h2>
 <p>The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
-Landing Pages. In Navigation you would find test cases such as Header Navigation, Sidebar Navigation, Main Search, where functionality related to navigation would be found. In Store, you would find test cases for Add Item To Cart, Checkout Items, Clear Cart, etc. Below is a picture of the Boozang navigation bar for the Interactive Tutorial &quot;Angular Store&quot;, where you can see the modules Fruit Interactive Tutorial and Your Space. As the Fruit Interactive Tutorial module has been expanded, we can see the test cases 'Add Random Fruits&quot; and &quot;Fruit Test&quot; inside.
-<img src="images/navigation_bar.png" alt="example image" title="An exemplary image" />
-On the top you can see the operations (from left to right): Create New Module, Create New Test, Paste, Cut, and Copy. In the tree structure, the folder
+Landing Pages. In Navigation you would find test cases such as Header Navigation, Sidebar Navigation, Main Search, where functionality related to navigation would be found. In Store, you would find test cases for Add Item To Cart, Checkout Items, Clear Cart, etc. Below is a picture of the Boozang navigation bar for the Interactive Tutorial &quot;Angular Store&quot;, where you can see the modules Fruit Interactive Tutorial and Your Space. As the Fruit Interactive Tutorial module has been expanded, we can see the test cases 'Add Random Fruits&quot; and &quot;Fruit Test&quot; inside.</p>
+<p><img src="images/navigation_bar.png" alt="example image" title="An exemplary image" /></p>
+<p>On the top you can see the operations (from left to right): Create New Module, Create New Test, Paste, Cut, and Copy. In the tree structure, the folder
 icons to the left of the module name shows if the module is expanded or not. To the left of the test name the icon shown denotes the test type. The test type can be either cell test, unit test, integration test or bug.</p>
 <h2 id="the-function-bar">The Function Bar</h2>
 <p><img src="images/annotated_panel.png" alt="example image" title="An exemplary image" /></p>
 <p>Here is an explanation of the functions:</p>
-<ol>
-<li>Create Folder: Creates a folder in the test tree to keep your tests sorted</li>
-<li>Create Test: Creates a new test. This creates an empty test which unlocks all test actions</li>
-<li>Record: Records actions into the tests by registering events in the browser. The events being registered can be set in Settings (in hamburger menu)</li>
-<li>Play: Runs the test</li>
-<li>Step: Runs the test one step at a time</li>
-<li>Stop: Stops current test run</li>
-<li>Validate: Creates a validation, or in test language, assertion in the page</li>
-<li>Comment: Creates a comment text box in the page. Useful to point out bugs and discrepancies</li>
-<li>Fill Form: Fills out form and enables binding into JSON data structures</li>
-<li>Cancel/Unlock: Reloads test from server. Local changes will be lost and lock removed</li>
-<li>Save: Saves to server database. In order to release lock follow with cancel</li>
-</ol>
+<dl>
+<dt>Create Folder</dt>
+<dd>Creates a folder in the test tree to keep your tests sorted</dd>
+<dt>Create Test</dt>
+<dd>Creates a new test. This creates an empty test which unlocks all test actions</dd>
+<dt>Record</dt>
+<dd>Records actions into the tests by registering events in the browser. The events being registered can be set in Settings (in hamburger menu)</dd>
+<dt>Play</dt>
+<dd>Runs the test</dd>
+<dt>Step</dt>
+<dd>Runs the test one step at a time</dd>
+<dt>Stop</dt>
+<dd>Stops current test run</dd>
+<dt>Validate</dt>
+<dd>Creates a validation, or in test language, assertion in the page</dd>
+<dt>Comment</dt>
+<dd>Creates a comment text box in the page. Useful to point out bugs and discrepancies
+9. Fill Form: Fills out form and enables binding into JSON data structures
+10. Cancel/Unlock: Reloads test from server. Local changes will be lost and lock removed
+11. Save: Saves to server database. In order to release lock follow with cancel</dd>
+</dl>
 <h2 id="settings">Settings</h2>
 <p>The Settings panel can be found in the Hamburger menu in the top right corner. The Settings are divided into tabs: General, Recording Events, Dom Strategy,
 Validation Ignore, Subscription, Service. As soon as you update any settings in needs to be Saved to take effect. This will affect your user only,
