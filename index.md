@@ -1,7 +1,7 @@
 Boozang Functional Overview
 ============
 
-In this functional overview document we will go over and explain the different functions of the Boozang test tool.
+In this functional overview document we will explain the different functions of the Boozang test tool.
 This document will be updated as the Boozang test service evolves and an updated copy can always be found on GitHub: 
 https://ljunggren.github.io/boozang-fo/
 
@@ -25,19 +25,57 @@ This document is divided into the following sections:
       * [Plug Test-case](#plug-test-case)
       * [Comment](#comment)
       * [Refesh](#refresh)
-  * [Data handling](#data-handling)
-  * [Appendix A](#appendix-a)
-
 
 The Navigation
 ------------
-Testing. The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
+The Boozang test tools allows you to organize your project into modules and test cases. The project can contain one or many modules, which in turn contain one or many test cases. A typical example could be: an E-Commerce project such as the Angular Store, would contain modules such as Navigation, Store and
 Landing Pages. In Navigation you would find test cases such as Header Navigation, Sidebar Navigation, Main Search, where functionality related to navigation would be found. In Store, you would find test cases for Add Item To Cart, Checkout Items, Clear Cart, etc. Below is a picture of the Boozang navigation bar for the Interactive Tutorial "Angular Store", where you can see the modules Fruit Interactive Tutorial and Your Space. As the Fruit Interactive Tutorial module has been expanded, we can see the test cases 'Add Random Fruits" and "Fruit Test" inside.
 
 ![example image](images/navigation_bar.png "An exemplary image")
 
 On the top you can see the operations (from left to right): Create New Module, Create New Test, Paste, Cut, and Copy. In the tree structure, the folder
  icons to the left of the module name shows if the module is expanded or not. To the left of the test name the icon shown denotes the test type. The test type can be either cell test, unit test, integration test or bug.
+
+Here is an explanation of the functions:
+
+Create Folder
+ : Creates a folder in the test tree to keep your tests sorted
+
+Create Test
+ : Creates a new test. This creates an empty test which unlocks all test actions
+
+Paste
+ : Pastes an object that has been previously cut/copied
+
+Cut
+ : Cuts an object from the project tree
+
+Copy
+ : Copies an object from the project tree
+
+Delete
+ : Delete an object from the project tree. The object needs to be unlocked in order to be deleted. 
+
+Lock
+ : In order to be able to edit a test case or module, it needs to be unlocked in the project tree. This is done with the Edit-operation in 
+ the Test case view. This is used to prevent multiple users editing the same test case. When other team members are working on something in
+ the test tree, it will be shown as a closed lock. 
+
+Module Name
+ : The Module name should capture the test functionality, such as Navigation, or match project documentation, such as parts in the requirements specification. 
+
+Test name
+ : The Test names should explain what is being tested, or map to another document that does, such as a detailed test case document or requirement specification.
+
+Project Title
+ : The title of the project. This is decided by the project administrator and specified when setting up the project on https://api.boozang.com
+
+Opened/Closed Module
+  : The folder icon indicates if the module is expanded or not.
+
+Test Type Icon
+ : There are four different types of tests: Bug, Cell test, Unit Test and Integration Test. The icon indicates which.    
+
 
 The Function Bar
 ------------
@@ -488,10 +526,3 @@ Element
 This refreshes the whole page.
 
 ![example image](images/action_refresh.png "An exemplary image")
-
-Data handling
-------------
-
-
-Appendix A
-------------
