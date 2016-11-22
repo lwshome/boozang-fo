@@ -7,26 +7,26 @@ https://ljunggren.github.io/boozang-fo/
 
 This document is divided into the following sections:
 
-  * [The Navigation](#The-Navigation)
-  * [The Function Bar](#The-Function-Bar)
-  * [Settings](#Settings)
-      * [General](#General)
-      * [Recording Events](#Recording-Events)
-      * [DOM Strategy](#DOM-Strategy) 
-      * [Validation Ignore](#Validation-Ignore)
-      * [Subscription](#Subscription)
-      * [Service](#Service)
-  * [Test View](#Test-View)
-  * [Actions](#Actions)
-      * [Validate](#Validate)
-      * [Trigger Event](#Trigger-Event)
-      * [Extract Data](#Extract-Data) 
-      * [JS Code](#JS-Code)
-      * [Plug Test-case](#Plug-test-case)
-      * [Comment](#Comment)
-      * [Refesh](#Refresh)
-  * [Data handling](#Data-handling)
-
+  * [The Navigation](#the-navigation)
+  * [The Function Bar](#the-function-bar)
+  * [Settings](#settings)
+      * [General](#general)
+      * [Recording Events](#recording-events)
+      * [DOM Strategy](#dom-strategy) 
+      * [Validation Ignore](#validation-ignore)
+      * [Subscription](#subscription)
+      * [Service](#service)
+  * [Test View](#test-view)
+  * [Actions](#actions)
+      * [Validate](#validate)
+      * [Trigger Event](#trigger-event)
+      * [Extract Data](#extract-data) 
+      * [JS Code](#js-code)
+      * [Plug Test-case](#plug-test-case)
+      * [Comment](#comment)
+      * [Refesh](#refresh)
+  * [Data handling](#data-handling)
+  * [Appendix A](#appendix-a)
 
 
 The Navigation
@@ -96,15 +96,15 @@ Pop Window Style
  : This allows you to put custom CSS for the tool-set window. By doing this the tool can be sized and positioned the same way every time it is launched.
 
 Wait Threshold
- : Wensheng
+ : Default value for maximum wait for validation. Can be overridden on a per action basis. 
 
 Step Interval
  : This is the step delay when re-playing a test in slow mode.
 
 Data Page URL
- : Wensheng
+ : Entry URL for an API end-point. 
 
-Checkboxes
+##### Check-boxes #####
 
 Auto Show Test Report after testing
  : This means test report will be shown after each test run.
@@ -112,7 +112,7 @@ Auto Show Test Report after testing
 Auto Pop Dom Picker when the best DOM path can not be found
  : When there isn't a unique DOM path found, this will pop the DOM picker to allow you to further specify the exact DOM path desired.
 
-### Recording Events###
+### Recording Events ###
 This settings tab allows the user to control which events should be captured when recording. 
 
 ![example image](images/settings_recording.png "An exemplary image")
@@ -130,10 +130,10 @@ Method
  : It's here possible to allow the user to show the DOM tree mask when recording. This will highlight the exact element in the DOM tree where the 
 trigger event is generated.
 
-Checkboxes
+##### Check-boxes #####
 
 Ignore Click on Input
- : Wensheng
+ : If checked clicking on input doesn't generate a separate event. If un-checked, every time an input is clicked it generates an event. This is normally not needed.
 
 ### DOM Strategy###
 
@@ -159,7 +159,7 @@ Contains text
  : In some cases, when ids cannot be enforced on all items, it's sometimes useful to match on the contents of an element. 
 
 DOM
- : Wensheng 
+ : When clicked an auto-validation is added on each an every record step.  
 
 ### Validation Ignore###
 
@@ -179,15 +179,16 @@ Other Elements
 
 ### Subscriptions ###
 
-This allows you to setup email notification for test runs. The options are self-explanatory.
+This allows you to setup email notification for test runs. 
 
-Wensheng 
+Server Host
+ : Which server you want to send test reports to.
 
 ![example image](images/settings_subscription.png "An exemplary image")
 
 ### Service ###
 
-Wensheng
+This is a experimental screen for posting TR reports and screen-shots to an external API.
 
 ![example image](images/settings_service.png "An exemplary image")
 
@@ -253,7 +254,8 @@ Breakpoint
  : A breakpoint. Test execution will stop at active breakpoint. Click to toggle breakpoint. 
 
 Delay
- : Wensheng
+ : Here a minimum or maximum wait threshold can be set. The maximum threshold overrides the values under Settings -> General and is the maximum wait that
+ will be done for an action before failing. The minimum threshold is the wait that will be done before doing the action call.
 
 Action Description
  : Description of action. Often auto-generated, but can be set explicitly if needed.
@@ -315,7 +317,7 @@ Element
  : This is the DOM tree element that the validation happens
 
 Script
- : Wensheng. This is a java script that will be executed
+ : Create custom custom conditions in Java script for data values. 
 
 Compare
   : A list of current compare operators. The default is equals (=).
@@ -404,10 +406,10 @@ Extract Data (SCRIPT)
 ![example image](images/action_extractdata.png "An exemplary image")
 
 Method
- : For the SCRIPT method, it extracts data from the Wensheng
+ : Script let you set variables based on Java script.
 
-Element
- : This is the DOM tree element that we are copying the data from
+Script
+ : Java script to set local variables.
 
 Content
  : BZ Format, innerHTML, outerHTML, innerText, Attribute, Sub Dom Count, Parent Level. These are described in the Appendix section. 
@@ -491,7 +493,7 @@ Data handling
 ------------
 
 
-Appendix
+Appendix A
 ------------
 
 
