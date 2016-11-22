@@ -242,10 +242,10 @@ DOM Warning
   : When highlighted yellow it means the DOM matching policy found several items matching the description. This does not mean it will fail, but that either the source code or the the DOM selection policy should be updated for optimum results. 
 
 Action Index
- : The index number of the action
+ : The index number of the action. Tip: User can double click on it to extend/collpse. In editting model, user can drag/drop to re-order actions in it.
 
 Action Type
- : The Action Type icon
+ : The Action Type icon. User can click on it to change action type.
 
 Select
  : An Action selector. Un-check to skip action execution.
@@ -258,7 +258,7 @@ Delay
  will be done for an action before failing. The minimum threshold is the wait that will be done before doing the action call.
 
 Action Description
- : Description of action. Often auto-generated, but can be set explicitly if needed.
+ : Description of action. Often auto-generated, but can be set explicitly if needed. If user wants to change back auto description, just need to clean the description, and Boozang will regenerate title for user.
 
 Play Action
  : Play Single Action.
@@ -458,7 +458,11 @@ Element
  : This is the DOM tree element that we are executing the script on.
 
 Script
-: This is the java script being executed
+: This is the java script being executed. To be sure user's code be executed properly, we suggest to put code in a function. The code format like:
+(function(){
+  ......
+  return xxx;
+})();
 
 ### Plug test-case ###
 
