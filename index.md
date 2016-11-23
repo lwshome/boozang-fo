@@ -280,7 +280,7 @@ DOM Warning
   : When highlighted yellow it means the DOM matching policy found several items matching the description. This does not mean it will fail, but that either the source code or the the DOM selection policy should be updated for optimum results. 
 
 Action Index
- : The index number of the action
+ : The index number of the action. Tip: User can double click to expand/collapse.
 
 Action Type
  : The Action Type icon
